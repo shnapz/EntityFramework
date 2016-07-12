@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CE6EB56E-F9B6-4083-B7C3-C099EED8B2D3}</ProjectGuid>
+    <ProjectGuid>{644294FB-C67C-4F35-A9D5-9D9C9872D463}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.EntityFrameworkCore.Tools.FunctionalTests</RootNamespace>
-    <AssemblyName>Microsoft.EntityFrameworkCore.Tools.FunctionalTests</AssemblyName>
+    <RootNamespace>Microsoft.EntityFrameworkCore.Tools.Tests</RootNamespace>
+    <AssemblyName>Microsoft.EntityFrameworkCore.Tools.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NoWarn>1591</NoWarn>
@@ -19,10 +19,10 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Microsoft.EntityFrameworkCore.Tools.FunctionalTests.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\Microsoft.EntityFrameworkCore.Tools.Tests.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -34,13 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Microsoft.EntityFrameworkCore.Tools\Microsoft.EntityFrameworkCore.Tools.csproj">
+    <ProjectReference Include="..\..\src\Microsoft.EntityFrameworkCore.Tools.VisualStudio\Microsoft.EntityFrameworkCore.Tools.VisualStudio.csproj">
       <Project>{1731bb70-07e9-4a96-85fc-e731276ef4bc}</Project>
-      <Name>Microsoft.EntityFrameworkCore.Tools</Name>
+      <Name>Microsoft.EntityFrameworkCore.Tools.VisualStudio</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Microsoft.EntityFrameworkCore.Relational.Design.Specification.Tests\Microsoft.EntityFrameworkCore.Relational.Design.Specification.Tests.csproj">
       <Project>{a0b496fe-1e59-4262-a5f5-101cbba42738}</Project>
@@ -62,27 +61,32 @@
       <Project>{1a73d95e-e8b5-4f96-908c-7b040e4f7afe}</Project>
       <Name>Microsoft.EntityFrameworkCore.Specification.Tests</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Microsoft.EntityFrameworkCore.SqlServer\Microsoft.EntityFrameworkCore.SqlServer.csproj">
-      <Project>{99595b81-d47c-40ba-8c61-5328a5a0e4ab}</Project>
-      <Name>Microsoft.EntityFrameworkCore.SqlServer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Microsoft.EntityFrameworkCore.Design.Core\Microsoft.EntityFrameworkCore.Design.Core.csproj">
-      <Project>{D3D0A8E8-EC2F-4E01-8650-8554E186A66F}</Project>
-      <Name>Microsoft.EntityFrameworkCore.Design.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\Microsoft.EntityFrameworkCore\Microsoft.EntityFrameworkCore.csproj">
       <Project>{715c38e9-b2f5-4db2-8025-0c6492debdd4}</Project>
       <Name>Microsoft.EntityFrameworkCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Microsoft.EntityFrameworkCore.Tools.Core.FunctionalTests\Microsoft.EntityFrameworkCore.Tools.Core.FunctionalTests.csproj">
-      <Project>{93f36377-39c6-48a2-8c01-fd72373a34a9}</Project>
-      <Name>Microsoft.EntityFrameworkCore.Tools.Core.FunctionalTests</Name>
+    <ProjectReference Include="..\Microsoft.EntityFrameworkCore.Relational.Design.Tests\Microsoft.EntityFrameworkCore.Relational.Design.Tests.csproj">
+      <Project>{47dcce35-c7fd-4e53-a0f9-bb8a7226978c}</Project>
+      <Name>Microsoft.EntityFrameworkCore.Relational.Design.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.EntityFrameworkCore.Relational.Tests\Microsoft.EntityFrameworkCore.Relational.Tests.csproj">
+      <Project>{1a884122-dc9e-42b1-8821-e43340f954d1}</Project>
+      <Name>Microsoft.EntityFrameworkCore.Relational.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.EntityFrameworkCore.Tests\Microsoft.EntityFrameworkCore.Tests.csproj">
+      <Project>{313f46fe-9962-4a15-805f-fcbdf5a6181e}</Project>
+      <Name>Microsoft.EntityFrameworkCore.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.EntityFrameworkCore.Design.Tests\Microsoft.EntityFrameworkCore.Design.Tests.csproj">
+      <Project>{7583e3f0-8b29-4bea-a55e-e8b66e6fd508}</Project>
+      <Name>Microsoft.EntityFrameworkCore.Design.Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiConsistencyTest.cs" />
     <Compile Include="Design\OperationExecutorTest.cs" />
-    <Compile Include="Design\Internal\ForwardingProxyTest.cs" />
-    <Compile Include="TestUtilities\AppDomainOperationExecutor.cs" />
+    <Compile Include="Design\OperationLogHandlerTest.cs" />
+    <Compile Include="Design\OperationResultHandlerTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
